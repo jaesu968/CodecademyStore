@@ -14,7 +14,7 @@ export function ProductCard({ product, isLoading, isAdded, onAddToCart }: Produc
       {/* todo: PRESSABLE add cart button*/}
       <Pressable 
         style={styles.button}
-      ></Pressable>
+      ><Text style={styles.buttonText}>{isAdded ? "Added" : "Add to Cart"}</Text></Pressable>
       {/* todo: ACTIVITY INDICATOR conditionally render activity indicator */}
       
     </View>
