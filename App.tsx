@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, Text, StyleSheet, FlatList, Pressable, Modal } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable, Modal, Platform, Alert } from 'react-native';
 
 import { SearchBar } from './components/SearchBar';
 import { FilterSwitch } from './components/FilterSwitch';
@@ -8,6 +8,7 @@ import { ProductCard } from './components/ProductCard';
 import { products } from './data/product';
 import { Product } from './types';
 import { CartSummary } from './components/CartSummary';
+import { set } from 'mongoose';
 
 
 export default function App(){
@@ -39,7 +40,27 @@ export default function App(){
 
   function onClearCartHandler() {
     // todo: "Alert" confirm clearing
-
+          if( Platform.OS === 'web' ) {
+        const confirmed = confirm("Are you sure you want to empty your cart? You won't be able to undo this action.");
+        if(confirmed) {
+          setAddedItems([]);
+          setShowCartSummary(false);
+        }
+      } else {
+    Alert.alert(
+      "Empty Cart",
+      "Are you sure you want to empty your cart? You won't be able to undo this action.",
+      [
+        {
+          text: "Cancel"
+        },
+        {
+          text: "Empty",
+          onPress: () => {setAddedItems([]), setShowCartSummary(false)}
+        }
+      ]
+    )
+    }
   }
 
   return (
@@ -54,6 +75,11 @@ export default function App(){
         <View style={styles.modalContainer}>
           <View style={styles.summaryContainer}>
             <View style={styles.summary}>
+              <CartSummary 
+              items={addedItems}
+              onClear={onClearCartHandler}
+              onClose={() => {setShowCartSummary(false)}}
+              /> 
             </View>
           </View>
         </View> 
@@ -148,6 +174,8 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     // todo: MODAL center
+    flex: 1, 
+    justifyContent: "center",
     paddingHorizontal: 10
   },
   summaryContainer: {
