@@ -8,7 +8,8 @@ export function SearchBar({ searchText, setSearchText }: SearchBarProps) {
       {/* todo: INPUT add textInput*/}
       <TextInput style={styles.textInput} placeholder="Search products..." 
       value={searchText}
-      onChangeText={setSearchText}></TextInput> 
+      onChangeText={setSearchText}
+      accessibilityLabel="Search products filter"></TextInput> 
     </View>
   )
 }
