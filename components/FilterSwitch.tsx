@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Switch } from 'react-native';
 import { FilterSwitchProps } from '../types/index';
 
 export function FilterSwitch({ showOnlySale, setShowOnlySale }: FilterSwitchProps) {
@@ -7,6 +7,10 @@ export function FilterSwitch({ showOnlySale, setShowOnlySale }: FilterSwitchProp
     <View style={styles.filterRow}>
       <Text>Show only sale items</Text>
       {/* todo: INPUT add SWITCH */}
+      <Switch 
+      value={showOnlySale}
+      onValueChange={setShowOnlySale}
+      />
       {/* todo: A11Y */}
 
     </View>
