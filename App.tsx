@@ -9,6 +9,7 @@ import { products } from './data/product';
 import { Product } from './types';
 import { CartSummary } from './components/CartSummary';
 
+
 export default function App(){
   const [searchText, setSearchText] = useState<string>('');
   const [showOnlySale, setShowOnlySale] = useState<boolean>(false);
@@ -70,6 +71,11 @@ export default function App(){
         {/* todo: PRESSABLE view cart */}
         <Pressable 
         style={[styles.summaryButton, addedItems.length === 0 ? styles.disabled : null]}
+        disabled={addedItems.length === 0}
+        onPress={() => {
+          setShowCartSummary(true)
+        }}
+        hitSlop={{top: 5, bottom: 5}}
 
         ><Text style={styles.buttonText}>View Cart</Text>
         </Pressable> 
