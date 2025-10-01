@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { ProductCardProps } from '../types/index';
 import { logger } from '../utils/logger';
 
@@ -12,6 +12,9 @@ export function ProductCard({ product, isLoading, isAdded, onAddToCart }: Produc
       {product.onSale && <Text style={styles.saleTag}>SALE</Text>}
 
       {/* todo: PRESSABLE add cart button*/}
+      <Pressable 
+        style={styles.button}
+      ></Pressable>
       {/* todo: ACTIVITY INDICATOR conditionally render activity indicator */}
       
     </View>
