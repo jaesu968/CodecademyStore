@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, ActivityIndicator } from 'react-native';
 import { ProductCardProps } from '../types/index';
 import { logger } from '../utils/logger';
+
 
 export function ProductCard({ product, isLoading, isAdded, onAddToCart }: ProductCardProps) {
   return (
@@ -14,6 +15,7 @@ export function ProductCard({ product, isLoading, isAdded, onAddToCart }: Produc
       {/* todo: PRESSABLE add cart button, shoulld add the item to the cart
       by calling onAddToCart, when first pressed it should log the item that will be 
       added to the cart using logger.logCartItem(product)*/}
+      {/* todo: ACTIVITY INDICATOR conditionally render activity indicator */}
       <Pressable 
         style={styles.button}
         onPressIn={() => {logger.logCartItem(product)}}
@@ -22,8 +24,10 @@ export function ProductCard({ product, isLoading, isAdded, onAddToCart }: Produc
         }}
         // disable button when isLoading or isAdded is true to prevent multiple presses
         disabled={isLoading || isAdded}
-      ><Text style={styles.buttonText}>{isAdded ? "Added" : "Add to Cart"}</Text></Pressable>
-      {/* todo: ACTIVITY INDICATOR conditionally render activity indicator */}
+      >{isLoading? <ActivityIndicator size="large" color="cyan" /> : 
+      <Text style={styles.buttonText}>{isAdded ? "Added" : "Add to Cart"}</Text>}
+      </Pressable>
+
       
     </View>
   )
