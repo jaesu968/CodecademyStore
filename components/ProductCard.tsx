@@ -11,9 +11,17 @@ export function ProductCard({ product, isLoading, isAdded, onAddToCart }: Produc
       <Text style={styles.productPrice}>${product.price}</Text>
       {product.onSale && <Text style={styles.saleTag}>SALE</Text>}
 
-      {/* todo: PRESSABLE add cart button*/}
+      {/* todo: PRESSABLE add cart button, shoulld add the item to the cart
+      by calling onAddToCart, when first pressed it should log the item that will be 
+      added to the cart using logger.logCartItem(product)*/}
       <Pressable 
         style={styles.button}
+        onPressIn={() => {logger.logCartItem(product)}}
+        onPress = {() => {
+          onAddToCart(product.id);
+        }}
+        // disable button when isLoading or isAdded is true to prevent multiple presses
+        disabled={isLoading || isAdded}
       ><Text style={styles.buttonText}>{isAdded ? "Added" : "Add to Cart"}</Text></Pressable>
       {/* todo: ACTIVITY INDICATOR conditionally render activity indicator */}
       
