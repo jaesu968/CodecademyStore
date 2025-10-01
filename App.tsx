@@ -71,7 +71,7 @@ export default function App(){
         <Pressable 
         style={[styles.summaryButton, addedItems.length === 0 ? styles.disabled : null]}
 
-        > 
+        ><Text style={styles.buttonText}>View Cart</Text>
         </Pressable> 
 
 
