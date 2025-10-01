@@ -24,7 +24,7 @@ export function ProductCard({ product, isLoading, isAdded, onAddToCart }: Produc
         }}
         // disable button when isLoading or isAdded is true to prevent multiple presses
         disabled={isLoading || isAdded}
-      >{isLoading? <ActivityIndicator size="large" color="cyan" /> : 
+      >{isLoading? <ActivityIndicator size="small" color="white" /> : 
       <Text style={styles.buttonText}>{isAdded ? "Added" : "Add to Cart"}</Text>}
       </Pressable>
 
