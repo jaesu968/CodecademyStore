@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 
 import { SearchBar } from './components/SearchBar';
 import { FilterSwitch } from './components/FilterSwitch';
@@ -68,6 +68,11 @@ export default function App(){
         />
 
         {/* todo: PRESSABLE view cart */}
+        <Pressable 
+        style={[styles.summaryButton, addedItems.length === 0 ? styles.disabled : null]}
+
+        > 
+        </Pressable> 
 
 
         {/* todo: FLATLIST create flatlist */}
