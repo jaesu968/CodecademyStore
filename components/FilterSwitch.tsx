@@ -10,6 +10,7 @@ export function FilterSwitch({ showOnlySale, setShowOnlySale }: FilterSwitchProp
       <Switch 
       value={showOnlySale}
       onValueChange={setShowOnlySale}
+      accessibilityLabel='Sale items filter'
       />
       {/* todo: A11Y */}
 
