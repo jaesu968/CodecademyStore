@@ -6,6 +6,7 @@ export function SearchBar({ searchText, setSearchText }: SearchBarProps) {
   return (
     <View style={styles.searchBox}>
       {/* todo: INPUT add textInput*/}
+      <TextInput style={styles.textInput} placeholder="Search products..."></TextInput> 
     </View>
   )
 }
