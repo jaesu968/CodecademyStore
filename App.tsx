@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable, Modal } from 'react-native';
 
 import { SearchBar } from './components/SearchBar';
 import { FilterSwitch } from './components/FilterSwitch';
@@ -45,14 +45,19 @@ export default function App(){
   return (
     <View style={styles.container}>
       {/* todo: MODAL wrap in modal*/}
-      <>
-        {/* <View style={styles.modalContainer}>
+      <Modal visible={showCartSummary} 
+      animationType="slide"
+      onRequestClose={() => {
+        setShowCartSummary(false)
+      }}
+      transparent={true}>
+        <View style={styles.modalContainer}>
           <View style={styles.summaryContainer}>
             <View style={styles.summary}>
             </View>
           </View>
-        </View> */}
-      </>
+        </View> 
+      </Modal>
       <View style={styles.header}>
         <Text style={styles.headerText}>Codecademy Store</Text>
       </View>
